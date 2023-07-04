@@ -151,6 +151,7 @@ defmodule Waffle.Processor do
 
   defp apply_transformation(_, :skip, _), do: {:ok, nil}
   defp apply_transformation(file, :noaction, _), do: {:ok, file}
+  defp apply_transformation(file, {:custom_func, func}), do: func.(file)
   # Deprecated
   defp apply_transformation(file, {:noaction}, _), do: {:ok, file}
 
